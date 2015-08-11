@@ -30,7 +30,7 @@ class MagicDismissTransion: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
             fromVC.view.frame = fromVCRect
         }) { (finish) -> Void in
-            transitionContext.completeTransition(true)
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         }
     }
     
