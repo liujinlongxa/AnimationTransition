@@ -21,10 +21,6 @@ class FirstViewController: UIViewController, UIViewControllerTransitioningDelega
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        self.transitioningDelegate = self
-//        let panGesture = UIPanGestureRecognizer(target: self, action: Selector("panGesture:"))
-//        self.view.addGestureRecognizer(panGesture)
     }
     
     func panGesture(gesture:UIPanGestureRecognizer) {
