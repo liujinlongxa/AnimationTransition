@@ -13,6 +13,10 @@
 		3B6901921B78F89900980058 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6901911B78F89900980058 /* SecondViewController.swift */; };
 		3B6901961B78FB3600980058 /* MagicPresentTransion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6901951B78FB3600980058 /* MagicPresentTransion.swift */; };
 		3B6901981B78FC1300980058 /* MagicDismissTransion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6901971B78FC1300980058 /* MagicDismissTransion.swift */; };
+		3B99635A1B7B74E700EE9282 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9963591B7B74E700EE9282 /* CustomSegue.swift */; };
+		3B99635C1B7B750900EE9282 /* SegueFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B99635B1B7B750900EE9282 /* SegueFirstViewController.swift */; };
+		3B99635E1B7B751300EE9282 /* SegueSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B99635D1B7B751300EE9282 /* SegueSecondViewController.swift */; };
+		3B9963601B7B7AE200EE9282 /* CustonUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B99635F1B7B7AE200EE9282 /* CustonUnwindSegue.swift */; };
 		3BDF65231B7728DF002522E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF65221B7728DF002522E4 /* AppDelegate.swift */; };
 		3BDF65251B7728DF002522E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF65241B7728DF002522E4 /* ViewController.swift */; };
 		3BDF652A1B7728DF002522E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BDF65291B7728DF002522E4 /* Assets.xcassets */; };
@@ -50,6 +54,10 @@
 		3B6901911B78F89900980058 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3B6901951B78FB3600980058 /* MagicPresentTransion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicPresentTransion.swift; sourceTree = "<group>"; };
 		3B6901971B78FC1300980058 /* MagicDismissTransion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicDismissTransion.swift; sourceTree = "<group>"; };
+		3B9963591B7B74E700EE9282 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		3B99635B1B7B750900EE9282 /* SegueFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueFirstViewController.swift; sourceTree = "<group>"; };
+		3B99635D1B7B751300EE9282 /* SegueSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueSecondViewController.swift; sourceTree = "<group>"; };
+		3B99635F1B7B7AE200EE9282 /* CustonUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustonUnwindSegue.swift; sourceTree = "<group>"; };
 		3BDF651F1B7728DF002522E4 /* AnimationTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BDF65221B7728DF002522E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BDF65241B7728DF002522E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 		3B6901871B78EF4400980058 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				3B9963581B7B742B00EE9282 /* Segue */,
 				3B6901941B78FB1B00980058 /* Model */,
 				3B6901931B78FB0B00980058 /* Push/Pop */,
 			);
@@ -139,6 +148,24 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		3B9963571B7B740D00EE9282 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				3B99635B1B7B750900EE9282 /* SegueFirstViewController.swift */,
+				3B99635D1B7B751300EE9282 /* SegueSecondViewController.swift */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
+		3B9963581B7B742B00EE9282 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				3B9963591B7B74E700EE9282 /* CustomSegue.swift */,
+				3B99635F1B7B7AE200EE9282 /* CustonUnwindSegue.swift */,
+			);
+			name = Segue;
+			sourceTree = "<group>";
+		};
 		3BDF65161B7728DF002522E4 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +189,7 @@
 		3BDF65211B7728DF002522E4 /* AnimationTransition */ = {
 			isa = PBXGroup;
 			children = (
+				3B9963571B7B740D00EE9282 /* Segue */,
 				3B69018B1B78F6C100980058 /* Model */,
 				3B6901881B78F19B00980058 /* Push/Pop */,
 				3B6901871B78EF4400980058 /* Animation */,
@@ -329,11 +357,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B99635E1B7B751300EE9282 /* SegueSecondViewController.swift in Sources */,
 				3BDF65571B772E60002522E4 /* CollectionViewCell.swift in Sources */,
 				3B69018A1B78F3C500980058 /* TableViewController.swift in Sources */,
 				3BDF65841B774885002522E4 /* MagicPopTransion.swift in Sources */,
 				3B6901921B78F89900980058 /* SecondViewController.swift in Sources */,
+				3B99635C1B7B750900EE9282 /* SegueFirstViewController.swift in Sources */,
+				3B99635A1B7B74E700EE9282 /* CustomSegue.swift in Sources */,
 				3B6901901B78F89000980058 /* FirstViewController.swift in Sources */,
+				3B9963601B7B7AE200EE9282 /* CustonUnwindSegue.swift in Sources */,
 				3B6901981B78FC1300980058 /* MagicDismissTransion.swift in Sources */,
 				3B6901961B78FB3600980058 /* MagicPresentTransion.swift in Sources */,
 				3BDF65551B772C1D002522E4 /* MagicMoveTransion.swift in Sources */,
