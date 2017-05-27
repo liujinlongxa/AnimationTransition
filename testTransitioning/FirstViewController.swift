@@ -10,8 +10,8 @@ import UIKit
 
 class FirstViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
-    private var percentDriven:UIPercentDrivenInteractiveTransition?
-    private var beginPoint:CGPoint = CGPointZero
+    fileprivate var percentDriven:UIPercentDrivenInteractiveTransition?
+    fileprivate var beginPoint:CGPoint = CGPoint.zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,35 +19,35 @@ class FirstViewController: UIViewController, UIViewControllerTransitioningDelega
         // Do any additional setup after loading the view.
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func panGesture(gesture:UIPanGestureRecognizer) {
+    func panGesture(_ gesture:UIPanGestureRecognizer) {
         
-        let progress = (gesture.locationInView(self.view).x - beginPoint.x) / (self.view.bounds.width - beginPoint.x)
+        let progress = (gesture.location(in: self.view).x - beginPoint.x) / (self.view.bounds.width - beginPoint.x)
         print(progress)
         
-        if gesture.state == UIGestureRecognizerState.Began {
-            beginPoint = gesture.locationInView(self.view)
+        if gesture.state == UIGestureRecognizerState.began {
+            beginPoint = gesture.location(in: self.view)
             self.percentDriven = UIPercentDrivenInteractiveTransition()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
-        else if gesture.state == UIGestureRecognizerState.Changed {
-            self.percentDriven?.updateInteractiveTransition(progress)
+        else if gesture.state == UIGestureRecognizerState.changed {
+            self.percentDriven?.update(progress)
         }
-        else if gesture.state == UIGestureRecognizerState.Cancelled || gesture.state == UIGestureRecognizerState.Ended {
+        else if gesture.state == UIGestureRecognizerState.cancelled || gesture.state == UIGestureRecognizerState.ended {
             if progress > 0.5 {
-                self.percentDriven?.finishInteractiveTransition()
+                self.percentDriven?.finish()
             }
             else {
-                self.percentDriven?.cancelInteractiveTransition()
+                self.percentDriven?.cancel()
             }
             self.percentDriven = nil
         }
     }
     
-    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return self.percentDriven
     }
     
@@ -56,20 +56,20 @@ class FirstViewController: UIViewController, UIViewControllerTransitioningDelega
         // Dispose of any resources that can be recreated.
     }
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return MagicPresentTransion()
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return MagicDismissTransion()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "modelShow" {
             
-            let secondVC = segue.destinationViewController
+            let secondVC = segue.destination
             secondVC.transitioningDelegate = self
-            let panGesture = UIPanGestureRecognizer(target: self, action: Selector("panGesture:"))
+            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(FirstViewController.panGesture(_:)))
             secondVC.view.addGestureRecognizer(panGesture)
             
         }

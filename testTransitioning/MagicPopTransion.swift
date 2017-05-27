@@ -9,36 +9,36 @@
 import UIKit
 
 class MagicPopTransion: NSObject, UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! ViewController
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! CollectionViewController
-        let container = transitionContext.containerView()
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! ViewController
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as! CollectionViewController
+        let container = transitionContext.containerView
         
-        let snapShotView = fromVC.imageView.snapshotViewAfterScreenUpdates(false)
-        snapShotView.frame = (container?.convertRect(fromVC.imageView.frame, fromView: fromVC.view))!
-        fromVC.imageView.hidden = true
+        let snapShotView = fromVC.imageView.snapshotView(afterScreenUpdates: false)
+        snapShotView?.frame = (container.convert(fromVC.imageView.frame, from: fromVC.view))
+        fromVC.imageView.isHidden = true
         
-        toVC.view.frame = transitionContext.finalFrameForViewController(toVC)
-        toVC.selectedCell?.imageView.hidden = true
+        toVC.view.frame = transitionContext.finalFrame(for: toVC)
+        toVC.selectedCell?.imageView.isHidden = true
         
-        container?.insertSubview(toVC.view, belowSubview: fromVC.view)
-        container?.addSubview(snapShotView)
+        container.insertSubview(toVC.view, belowSubview: fromVC.view)
+        container.addSubview(snapShotView!)
         
-        UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
-            snapShotView.frame = (container?.convertRect((toVC.selectedCell?.imageView.frame)!, fromView: toVC.selectedCell))!
+        UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: { () -> Void in
+            snapShotView?.frame = (container.convert((toVC.selectedCell?.imageView.frame)!, from: toVC.selectedCell))
             fromVC.view.alpha = 0
-            }) { (finish) -> Void in
-                toVC.selectedCell?.imageView.hidden = false
-                snapShotView.removeFromSuperview()
-                fromVC.imageView.hidden = false
+            }, completion: { (finish) -> Void in
+                toVC.selectedCell?.imageView.isHidden = false
+                snapShotView?.removeFromSuperview()
+                fromVC.imageView.isHidden = false
                 
                 // 如果取消了，则不发送完成
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 
-        }
+        }) 
     }
 }
