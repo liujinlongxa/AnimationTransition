@@ -307,13 +307,17 @@
 				TargetAttributes = {
 					3BDF651E1B7728DF002522E4 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 6HU96XHEX2;
+						LastSwiftMigration = 0830;
 					};
 					3BDF65321B7728DF002522E4 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 						TestTargetID = 3BDF651E1B7728DF002522E4;
 					};
 					3BDF653D1B7728DF002522E4 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 						TestTargetID = 3BDF651E1B7728DF002522E4;
 					};
 				};
@@ -528,11 +532,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6HU96XHEX2;
 				INFOPLIST_FILE = testTransitioning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jaylon.AnimationTransition;
 				PRODUCT_NAME = AnimationTransition;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -540,11 +546,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6HU96XHEX2;
 				INFOPLIST_FILE = testTransitioning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jaylon.AnimationTransition;
 				PRODUCT_NAME = AnimationTransition;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -556,6 +564,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jaylon.testTransitioningTests;
 				PRODUCT_NAME = AnimationTransition;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimationTransition.app/AnimationTransition";
 			};
 			name = Debug;
@@ -568,6 +577,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jaylon.testTransitioningTests;
 				PRODUCT_NAME = AnimationTransition;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnimationTransition.app/AnimationTransition";
 			};
 			name = Release;
@@ -579,6 +589,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jaylon.testTransitioningUITests;
 				PRODUCT_NAME = AnimationTransition;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = testTransitioning;
 				USES_XCTRUNNER = YES;
 			};
@@ -591,6 +602,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Jaylon.testTransitioningUITests;
 				PRODUCT_NAME = AnimationTransition;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = testTransitioning;
 				USES_XCTRUNNER = YES;
 			};

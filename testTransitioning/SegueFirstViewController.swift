@@ -21,7 +21,7 @@ class SegueFirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func unwindForSegue(segue:UIStoryboardSegue) {
+    @IBAction func unwindForSegue(_ segue:UIStoryboardSegue) {
         
     }
     

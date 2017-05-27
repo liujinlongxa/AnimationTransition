@@ -10,28 +10,28 @@ import UIKit
 
 class MagicDismissTransion: NSObject, UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
     
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! SecondViewController
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! UINavigationController
-        let container = transitionContext.containerView()!
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! SecondViewController
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as! UINavigationController
+        let container = transitionContext.containerView
         
         var fromVCRect = fromVC.view.bounds
         fromVCRect.origin.y = -fromVCRect.height
         fromVCRect.origin.x = fromVCRect.width
         
         container.addSubview(toVC.view)
-        container.bringSubviewToFront(fromVC.view)
+        container.bringSubview(toFront: fromVC.view)
         
-        UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
+        UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: { () -> Void in
             fromVC.view.frame = fromVCRect
-        }) { (finish) -> Void in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
-        }
+        }, completion: { (finish) -> Void in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }) 
     }
     
 }

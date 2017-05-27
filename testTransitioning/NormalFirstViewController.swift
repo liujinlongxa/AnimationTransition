@@ -23,47 +23,47 @@ class NormalFirstViewController: UIViewController {
     }
     
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // 设置模态的过场动画类型
         if segue.identifier == "normalSegue1" {
-            segue.destinationViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+            segue.destination.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         }
         else if segue.identifier == "normalSegue2" {
-            segue.destinationViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+            segue.destination.modalTransitionStyle = UIModalTransitionStyle.partialCurl
         }
         
     }
     
     
-    @IBAction func clickFirstButton(sender: AnyObject) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("normalSecondVC")
+    @IBAction func clickFirstButton(_ sender: AnyObject) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "normalSecondVC")
         
         //设置过场动画
         let transiton = CATransition()
         transiton.type = "cube"
         transiton.subtype = kCATransitionFromRight
-        self.navigationController!.view.layer.addAnimation(transiton, forKey: "transitionAnimation")
-        vc.view.backgroundColor = UIColor.orangeColor()
+        self.navigationController!.view.layer.add(transiton, forKey: "transitionAnimation")
+        vc.view.backgroundColor = UIColor.orange
         
         self.navigationController?.pushViewController(vc
             , animated: false)
     }
     
-    @IBAction func clickSecondButton(sender: AnyObject) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("normalSecondVC")
+    @IBAction func clickSecondButton(_ sender: AnyObject) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "normalSecondVC")
         
         //设置过场动画
         let transiton = CATransition()
         transiton.type = "pageCurl"
-        self.navigationController!.view.layer.addAnimation(transiton, forKey: "transitionAnimation")
-        vc.view.backgroundColor = UIColor.orangeColor()
+        self.navigationController!.view.layer.add(transiton, forKey: "transitionAnimation")
+        vc.view.backgroundColor = UIColor.orange
         
         self.navigationController?.pushViewController(vc
             , animated: false)
         
     }
-    @IBAction func unwindForSegue(unwindSegue:UIStoryboardSegue) {
+    @IBAction func unwindForSegue(_ unwindSegue:UIStoryboardSegue) {
         
     }
 

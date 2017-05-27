@@ -10,15 +10,15 @@ import UIKit
 
 class MagicPresentTransion: NSObject, UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
-        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! UINavigationController
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! SecondViewController
-        let container = transitionContext.containerView()!
+        let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! UINavigationController
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as! SecondViewController
+        let container = transitionContext.containerView
         
         var fromVCRect = fromVC.view.bounds
         fromVCRect.origin.y = -fromVCRect.height
@@ -27,11 +27,11 @@ class MagicPresentTransion: NSObject, UIViewControllerAnimatedTransitioning {
         
         container.addSubview(toVC.view)
         
-        UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { () -> Void in
+        UIView.animate(withDuration: self.transitionDuration(using: transitionContext), animations: { () -> Void in
             toVC.view.frame = fromVC.view.bounds
-            }) { (finish) -> Void in
+            }, completion: { (finish) -> Void in
                 transitionContext.completeTransition(true)
-        }
+        }) 
         
     }
     

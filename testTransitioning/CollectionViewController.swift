@@ -17,10 +17,10 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView?.backgroundColor = UIColor.blueColor()
+        self.collectionView?.backgroundColor = UIColor.blue
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.delegate = self
     }
@@ -36,24 +36,24 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
 
     // MARK: UICollectionViewDataSource
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
     
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.selectedCell = self.collectionView?.cellForItemAtIndexPath(indexPath) as? CollectionViewCell
-        self.performSegueWithIdentifier("pushToDetail", sender: nil)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedCell = self.collectionView?.cellForItem(at: indexPath) as? CollectionViewCell
+        self.performSegue(withIdentifier: "pushToDetail", sender: nil)
     }
     
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if operation == UINavigationControllerOperation.Push {
+        if operation == UINavigationControllerOperation.push {
             return MagicMoveTransion()
         }
         else {
@@ -61,9 +61,9 @@ class CollectionViewController: UICollectionViewController, UINavigationControll
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushToDetail" {
-            let detailVC = segue.destinationViewController as! ViewController
+            let detailVC = segue.destination as! ViewController
             detailVC.image = self.selectedCell?.imageView.image
         }
     }

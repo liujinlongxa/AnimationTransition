@@ -20,9 +20,9 @@ class SegueSecondViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func unwindAction(sender: AnyObject) {
+    @IBAction func unwindAction(_ sender: AnyObject) {
         
-        self.performSegueWithIdentifier("unwindSegue", sender: self)
+        self.performSegue(withIdentifier: "unwindSegue", sender: self)
         
     }
 }
